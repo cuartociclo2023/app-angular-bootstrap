@@ -5,20 +5,20 @@
     <div class="card-body">
         <div class="mb-3">
             <label for="txtnombre" class="form-label">Ingrese su Nombre:</label>
-            <input type="text" class="form-control" id="txtnombre" >
+            <input type="text" class="form-control" id="txtnombre" [(ngModel)]="formImc.nombre" >
         </div>
         <div class="mb-3">
             <label for="txttalla" class="form-label">Ingrese su Talla:</label>
-            <input type="text" class="form-control" id="txttalla" >
+            <input type="text" class="form-control" id="txttalla" [(ngModel)]="formImc.talla" >
         </div>
         <div class="mb-3">
             <label for="txtpeso" class="form-label">Ingrese su Peso:</label>
-            <input type="email" class="form-control" id="txtpeso" >
+            <input type="email" class="form-control" id="txtpeso" [(ngModel)]="formImc.peso" >
          </div>
-         <button type="button" class="btn btn-primary">CALCULAR</button>
+         <button type="button" class="btn btn-primary" (click)="calcularImc()">CALCULAR</button>
          <hr />
-         <div class="alert alert-info" role="alert">
-            A simple info alert—check it out!
+         <div class="alert alert-info" role="alert" *ngIf="mostrarResultado">
+            Su valor IMC es: {{formImc.valorimc}}
           </div>
         <hr />
         <table class="table">
@@ -30,10 +30,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+              <tr *ngFor="let paciente of listPacientes">
+                <th scope="row">{{paciente.nombre}}</th>
+                <td>{{paciente.valorimc}}</td>
+                <td>{{paciente.status}}</td>
               </tr>
             </tbody>
           </table> 
