@@ -33,6 +33,7 @@ export class FormCalculoImcComponent {
     }else {
       status = "Obesidad mórbida."
     }
+    this.mostrarResultado = true;
     this.listPacientes.push({nombre: String(this.formImc.nombre), valorimc: this.formImc.valorimc, status: status})
   }
 
