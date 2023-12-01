@@ -1,27 +1,22 @@
-<button type="button" class="btn btn-primary">Mostrar Alumnos</button>
-<button type="button" class="btn btn-secondary">Mostrar Cursos</button>
+<h4>{{fechaActual | date:"dd-MM-yyyy 'at' hh:mm a"}}</h4>
 <hr />
-<div class="card text-bg-primary mb-3" >
-    <div class="card-header">Lista de Alumnos</div>
+<button type="button" class="btn btn-primary" (click)="showStudents()">Mostrar Alumnos</button>
+<button type="button" class="btn btn-secondary" (click)="showCourses()">Mostrar Cursos</button>
+<hr />
+<div class="card  mb-3" *ngIf="mostrarAlumnos === 1" >
+    <div class="card-header text-bg-primary">Lista de Alumnos</div>
     <div class="card-body">        
         <ul class="list-group">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
+            <li class="list-group-item" *ngFor="let alumno of alumnos" >{{alumno.nombre | uppercase }}</li>
+           
           </ul>
     </div>
   </div>
-  <div class="card text-bg-secondary mb-3" >
-    <div class="card-header">Lista de Cursos</div>
+  <div class="card  mb-3" *ngIf="mostrarAlumnos === 0">
+    <div class="card-header text-bg-secondary">Lista de Cursos</div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
+            <li class="list-group-item" *ngFor="let curso of cursos">{{curso.nombre}} - {{curso.precio | currency:'S/.'}}</li>
           </ul>
     </div>
   </div>
